@@ -4,7 +4,7 @@
 
 # @rovahub/vue-float-chat
 
-This Vue2 plugin injects a Zalo OA chat widget chat instance into all of your vue instances
+This Vue2 plugin injects float chat instance into all of your vue instances
 
 ## Install
 ``` bash

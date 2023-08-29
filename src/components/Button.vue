@@ -1,11 +1,11 @@
 <template>
-  <div class="vue-float-chat-button" style="">
-    <span data-delay="500">Gọi điện</span>
-    <a
-        aria-label="Gọi hỗ trợ bằng số điện thoại 1900.63.3579"
-        href="tel:1900633579"
-        rel="noopener"
-        class="t-btn-support-contact"
+  <div class="vue-float-chat-button">
+    <span>Gọi điện</span>
+    <component
+        :is="type"
+        :aria-label="description"
+        :class="getClassButton"
+        class="vue-float-chat-button__social"
     >
       <svg
           fill="none"
@@ -30,14 +30,46 @@
             stroke-width="2"
         ></path>
       </svg>
-    </a>
+    </component>
   </div>
 </template>
 <script>
 export default {
-  name: "Button"
+  name: "Button",
+  props: {
+    label: {
+      type: String,
+      default: '',
+      required: true,
+    },
+    description: {
+      type: String,
+      default: '',
+    },
+    type: {
+      type: String,
+      default: 'a',
+      validator(value) {
+        return ['a', 'button'].includes(value);
+      }
+    },
+    social: {
+      type: String,
+      default: 'a',
+      validator(value) {
+        return ['a', 'button'].includes(value);
+      }
+    }
+  },
+  computed: {
+    getClassButton() {
+      return `vue-float-chat-button__${this.social}`;
+    }
+  }
 }
 </script>
-<style scoped>
+<style scoped lang="scss">
+.vue-float-chat-button{
 
+}
 </style>
